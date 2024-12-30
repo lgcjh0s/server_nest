@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { BaseService } from 'src/base/base.service';
+import { IStore } from 'src/common/common.interfaces';
 
 @Injectable()
 export class ScrapService extends BaseService {
@@ -8,9 +9,10 @@ export class ScrapService extends BaseService {
     iconv = require('iconv-lite');
     jsdom = require('jsdom');
 
-    async scrap(drwNo: number): Promise<string> {
-        const topStores: string = await this.scrapTopStores(drwNo);
-        this.logger.debug(topStores);
+    async scrap(drwNo: number): Promise<IStore[]> {
+        const scrapHtml: string = await this.scrapTopStores(drwNo);
+        this.logger.debug(scrapHtml);
+        const topStores: IStore[] = this.parseTopStores(drwNo, scrapHtml);
         return topStores;
     }
 
@@ -71,7 +73,7 @@ export class ScrapService extends BaseService {
         return await resp.text();
     }
 
-    async parseTopStores(drwNo: number, html: string) {
+    parseTopStores(drwNo: number, html: string): IStore[] {
 
         const { JSDOM } = this.jsdom;
         const dom = new JSDOM('<html><body></body></html>');
@@ -80,8 +82,27 @@ export class ScrapService extends BaseService {
         div.innerHTML = html;
 
         const tbl: HTMLTableElement = div.querySelectorAll('.tbl_data.tbl_data_col')[0];
+        const rows: NodeList = tbl.querySelectorAll('tbody tr');
+        const topStores: IStore[] = [];
 
+        rows.forEach((ele: HTMLTableRowElement) => {
+            const tds: HTMLCollectionOf<HTMLTableCellElement> = ele.getElementsByTagName('td');
+            const codeTd: string = tds[4].innerHTML.trim();
+            const storeCode: string = codeTd.substring(codeTd.indexOf("'") + 1, codeTd.lastIndexOf("'"));
 
+            const store: IStore = {
+                drwNo: drwNo,
+                storeCode: storeCode,
+                storeName: tds[1].innerHTML.trim(),
+                addr: tds[3].innerHTML.trim(),
+                lat: '',
+                lon: '',
+                telNo: ''
+            };
+            topStores.push(store);
+        });
+
+        return topStores;
     }
 
     async scrapStoreLocation() {
