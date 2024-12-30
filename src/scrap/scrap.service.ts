@@ -49,7 +49,6 @@ export class ScrapService extends BaseService {
 
     async scrapTopStores(drwNo: number): Promise<string> {
 
-        //const charset: string = 'EUC-KR';
         const url: string = 'https://dhlottery.co.kr/store.do?method=topStore&pageGubun=L645';
         const bodyData = {
             method: 'topStore',
@@ -73,6 +72,15 @@ export class ScrapService extends BaseService {
     }
 
     async parseTopStores(drwNo: number, html: string) {
+
+        const { JSDOM } = this.jsdom;
+        const dom = new JSDOM('<html><body></body></html>');
+
+        const div = dom.window.document.createElement('div');
+        div.innerHTML = html;
+
+        const tbl: HTMLTableElement = div.querySelectorAll('.tbl_data.tbl_data_col')[0];
+
 
     }
 
