@@ -1,22 +1,29 @@
 import { Injectable } from '@nestjs/common';
 import { BaseService } from 'src/base/base.service';
+import { Http } from 'src/common/common.http';
 import { IStore } from 'src/common/common.interfaces';
 
 @Injectable()
 export class ScrapService extends BaseService {
 
+    http = Http();
     jsdom = require('jsdom');
 
     async scrap(drwNo: number): Promise<IStore[]> {
         
         const scrapHtml: string = await this.scrapTopStores(drwNo);
-        this.logger.debug(scrapHtml);
         const topStores: IStore[] = this.parseTopStores(drwNo, scrapHtml);
-        const addLocInfo: IStore[] = topStores.map(async (store: IStore) => {
-            const locHtml: string = await this.scrapStoreLocation(store);
+
+        for (let inx=0; inx<topStores.length; inx++) {
+            let store: IStore = topStores[inx];
+            const locHtml: string = await this.scrapStoreLocation(store.storeCode);
             store = this.parseStoreLocation(locHtml, store);
-            return store;
-        });
+            topStores[inx] = store;
+            console.log(store);
+        }
+
+
+        this.logger.debug(JSON.stringify(topStores));
 
         return topStores;
     }
@@ -34,15 +41,8 @@ export class ScrapService extends BaseService {
             schVal: ''
         };
 
-        const resp: Response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(bodyData)
-        });
-
-        return await resp.text();
+        const html: string = await this.http.doPost(url, bodyData);
+        return html;
     }
 
     parseTopStores(drwNo: number, html: string): IStore[] {
@@ -77,18 +77,11 @@ export class ScrapService extends BaseService {
         return topStores;
     }
 
-    async scrapStoreLocation(store: IStore): Promise<string> {
+    async scrapStoreLocation(storeCode: string): Promise<string> {
 
-        const url: string = 'https://dhlottery.co.kr/store.do?method=topStoreLocation&gbn=lotto&rtlrId=' + store.storeCode;
-        const resp: Response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: null
-        });
-
-        return await resp.text();
+        const url: string = 'https://dhlottery.co.kr/store.do?method=topStoreLocation&gbn=lotto&rtlrId=' + storeCode;
+        const html: string = await this.http.doPost(url);
+        return html;
     }
 
     parseStoreLocation(html: string, store: IStore): IStore {
