@@ -2,6 +2,7 @@ import { Controller, Get, Res } from '@nestjs/common';
 import { BaseController } from 'src/base/base.controller';
 import { ScrapService } from './scrap.service';
 import { Response } from 'express';
+import { IStore } from 'src/common/common.interfaces';
 
 @Controller('scrap')
 export class ScrapController extends BaseController {
@@ -12,9 +13,9 @@ export class ScrapController extends BaseController {
         super();
     }
 
-    @Get('test')
-    async cookieTest(@Res() res: Response) {
-        //return await this.scrapService.scrap(1150);
-        return res.send(JSON.stringify(await this.scrapService.scrap(1150)));
+    @Get('fire')
+    async fire(@Res() res: Response) {
+        const topStores: IStore[] = await this.scrapService.scrap(1000);
+        return res.send(JSON.stringify(topStores));
     }
 }
