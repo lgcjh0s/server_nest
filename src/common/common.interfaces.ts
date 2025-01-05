@@ -8,6 +8,11 @@ interface IStore {
     telNo: string;
 }
 
+interface ICachedData {
+    data: string;
+}
+
 export {
-    IStore
+    IStore,
+    ICachedData
 }
