@@ -1,4 +1,4 @@
-import { Controller, Get, Res } from '@nestjs/common';
+import { Controller, Get, Query, Res } from '@nestjs/common';
 import { BaseController } from 'src/base/base.controller';
 import { MemoryService } from './memory.service';
 import { Response } from 'express';
@@ -14,8 +14,8 @@ export class MemoryController extends BaseController {
     }
 
     @Get('selectComCodeFromDB')
-    async selectComCodeFromDB(@Res() res: Response): Promise<Response> {
-        const comCode: ComCode[] = await this.memoryService.selectComCodeFromDB('A00001');
+    async selectComCodeFromDB(@Query('ctgrCd') ctgrCd: string, @Res() res: Response): Promise<Response> {
+        const comCode: ComCode[] = await this.memoryService.selectComCodeFromDB(ctgrCd);
         return res.send(comCode);
     }
 
