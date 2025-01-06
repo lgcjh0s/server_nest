@@ -20,8 +20,8 @@ export class MemoryController extends BaseController {
     }
 
     @Get('selectComCode')
-    async selectComCode(@Res() res: Response): Promise<Response> {
-        const comCode: ComCode[] = await this.memoryService.selectComCode('A00001');
+    async selectComCode(@Query('ctgrCd') ctgrCd: string, @Res() res: Response): Promise<Response> {
+        const comCode: ComCode[] = await this.memoryService.selectComCode(ctgrCd);
         return res.send(comCode);
     }
 
