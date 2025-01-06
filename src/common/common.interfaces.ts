@@ -9,7 +9,7 @@ interface IStore {
 }
 
 interface ICachedData {
-    data: string;
+    data: any
 }
 
 export {

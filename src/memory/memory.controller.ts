@@ -2,6 +2,7 @@ import { Controller, Get, Res } from '@nestjs/common';
 import { BaseController } from 'src/base/base.controller';
 import { MemoryService } from './memory.service';
 import { Response } from 'express';
+import { ComCode } from 'src/entity/comcode.entity';
 
 @Controller('memory')
 export class MemoryController extends BaseController {
@@ -12,22 +13,21 @@ export class MemoryController extends BaseController {
         super();
     }
 
-    @Get('setTest')
-    async setTest(@Res() res: Response) {
-        await this.memoryService.setTest('test01');
-        return res.send('Saved');
-    }
-
-    @Get('getTest')
-    async getTest(@Res() res: Response) {
-        const cached: string = await this.memoryService.getTest();
-        return res.send('Current cached values is ' + cached);
+    @Get('selectComCodeFromDB')
+    async selectComCodeFromDB(@Res() res: Response): Promise<Response> {
+        const comCode: ComCode[] = await this.memoryService.selectComCodeFromDB('A00001');
+        return res.send(comCode);
     }
 
     @Get('selectComCode')
-    async selectComCode(@Res() res: Response) {
-        const comCode = await this.memoryService.selectSample('0000001');
-        console.log(comCode);
+    async selectComCode(@Res() res: Response): Promise<Response> {
+        const comCode: ComCode[] = await this.memoryService.selectComCode('A00001');
         return res.send(comCode);
+    }
+
+    @Get('reload')
+    async reload(@Res() res: Response) {
+        await this.memoryService.reload();
+        return res.send('reloaded');
     }
 }

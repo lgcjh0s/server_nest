@@ -3,15 +3,15 @@ import { Column, Entity, PrimaryColumn } from "typeorm";
 @Entity({ name: 'TB_COM_CODE' })
 export class ComCode {
 
-    @PrimaryColumn('varchar', { length: 6, nullable: false })
+    @PrimaryColumn('varchar', { name: 'CTGR_CD', length: 6, nullable: false })
     ctgrCd: string;
 
-    @PrimaryColumn('varchar', { length: 6, nullable: false})
+    @PrimaryColumn('varchar', { name: 'DTL_CD', length: 6, nullable: false})
     dtlCd: string;
 
-    @Column('varchar', { length: 40})
+    @Column('varchar', { name: 'CD_NM', length: 40})
     cdNm: string;
 
-    @Column('datetime')
+    @Column('datetime', { name: 'EXP_DT' })
     expDt: string;
 }

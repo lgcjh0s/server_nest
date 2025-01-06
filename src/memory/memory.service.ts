@@ -19,22 +19,39 @@ export class MemoryService extends BaseService {
         super();
     }
 
-    async setTest(cacheData: string) {
-        await this.cacheManager.set('cached_item', { data: cacheData }, 0);
+    async selectComCodeFromDB(ctgrCd: string): Promise<ComCode[]> {
+        const comCode: ComCode[] = await this.comCodeRepository.find({
+            select: ['ctgrCd', 'dtlCd', 'cdNm', 'expDt'],
+            where: { ctgrCd: ctgrCd }
+        });
+        return comCode;
     }
 
-    async getTest(): Promise<string> {
-        const cached: ICachedData = await this.cacheManager.get('cached_item');
-        console.log(cached);
-        if (!cached) return 'Empty';
-        return cached.data;
+    async reset() {
+        await this.cacheManager.reset();
     }
 
-    async selectSample(ctgrCd: string) {
-        return this.comCodeRepository.find({
-            where: { ctgrCd: ctgrCd },
+    async loadComCode() {
+        const comCode: ComCode[] = await this.comCodeRepository.find({
             select: ['ctgrCd', 'dtlCd', 'cdNm', 'expDt']
         });
+        await this.cacheManager.set('__comCode', { data: comCode }, 0);
+    }
+
+    async reload() {
+        await this.reset();
+        await this.loadComCode();
+    }
+
+    async selectAllComCode(): Promise<ComCode[]> {
+        const cachedData: ICachedData = await this.cacheManager.get('__comCode');
+        if (!cachedData || !cachedData.data) return [] as ComCode[];
+        return cachedData.data as ComCode[];
+    }
+
+    async selectComCode(ctgrCd: string): Promise<ComCode[]> {
+        const all: ComCode[] = await this.selectAllComCode();
+        return all.filter((code: ComCode) => code.ctgrCd === ctgrCd);
     }
 
 }
