@@ -23,4 +23,11 @@ export class MemoryController extends BaseController {
         const cached: string = await this.memoryService.getTest();
         return res.send('Current cached values is ' + cached);
     }
+
+    @Get('selectComCode')
+    async selectComCode(@Res() res: Response) {
+        const comCode = await this.memoryService.selectSample('0000001');
+        console.log(comCode);
+        return res.send(comCode);
+    }
 }

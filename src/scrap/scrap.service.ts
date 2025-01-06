@@ -19,11 +19,7 @@ export class ScrapService extends BaseService {
             const locHtml: string = await this.scrapStoreLocation(store.storeCode);
             store = this.parseStoreLocation(locHtml, store);
             topStores[inx] = store;
-            console.log(store);
         }
-
-
-        this.logger.debug(JSON.stringify(topStores));
 
         return topStores;
     }

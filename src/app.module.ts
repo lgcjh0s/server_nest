@@ -5,6 +5,7 @@ import { MemoryModule } from './memory/memory.module';
 import { ScrapModule } from './scrap/scrap.module';
 import { CookieModule } from './cookie/cookie.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ComCode } from './entity/comcode.entity';
 
 @Module({
   imports: [
@@ -13,11 +14,18 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     CookieModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
+      //host: 'db.lotto.gabia.io',
       host: 'localhost',
       port: 3306,
+      //username: 'lotto',
       username: 'testuser',
+      //password: 'user0101!!',
       password: 'test01!',
+      //database: 'dblotto',
       database: 'testDB',
+      entities: [
+        ComCode
+      ],
       synchronize: false,
       logging: true
     })
