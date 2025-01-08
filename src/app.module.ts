@@ -6,12 +6,16 @@ import { ScrapModule } from './scrap/scrap.module';
 import { CookieModule } from './cookie/cookie.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ComCode } from './entity/comcode.entity';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
+import { MpaModule } from './mpa/mpa.module';
 
 @Module({
   imports: [
     MemoryModule, 
     ScrapModule, 
     CookieModule,
+    MpaModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       //host: 'db.lotto.gabia.io',
@@ -28,6 +32,9 @@ import { ComCode } from './entity/comcode.entity';
       ],
       synchronize: false,
       logging: true
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '../', 'service')
     })
   ],
   controllers: [AppController],

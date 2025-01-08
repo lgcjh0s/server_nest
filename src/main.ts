@@ -7,12 +7,9 @@ import { Logger } from './common/common.logger';
 async function bootstrap() {
 
   const logger = Logger();
-  const fs = require('fs');
-  const xml2js = require('xml2js');
-  const parser = new xml2js.Parser();
   
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
-  app.setBaseViewsDir(join(__dirname, '../../', 'public'));
+  app.setBaseViewsDir(join(__dirname, '..', 'service'));
   app.setViewEngine('hbs');
   await app.listen(process.env.PORT ?? 3000);
 
