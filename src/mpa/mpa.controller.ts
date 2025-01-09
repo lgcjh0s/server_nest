@@ -16,7 +16,7 @@ export class MpaController extends BaseController {
             fmlYn: false,
             brandCd: 'U',
             cardNo: '0911',
-            payTy: '01',
+            payTy: '일시불',
             payAmt: 11600
         }, {
             apprNo: 10000002,
@@ -26,7 +26,7 @@ export class MpaController extends BaseController {
             fmlYn: false,
             brandCd: 'U',
             cardNo: '0911',
-            payTy: '01',
+            payTy: '일시불',
             payAmt: 6900
         }, {
             apprNo: 10000003,
@@ -36,7 +36,7 @@ export class MpaController extends BaseController {
             fmlYn: true,
             brandCd: 'U',
             cardNo: '0359',
-            payTy: '01',
+            payTy: '일시불',
             payAmt: 11600
         }, {
             apprNo: 10000004,
@@ -46,7 +46,7 @@ export class MpaController extends BaseController {
             fmlYn: false,
             brandCd: 'U',
             cardNo: '0911',
-            payTy: '01',
+            payTy: '할부(3개월)',
             payAmt: 291000
         }, {
             apprNo: 10000005,
@@ -56,7 +56,7 @@ export class MpaController extends BaseController {
             fmlYn: false,
             brandCd: 'U',
             cardNo: '0541',
-            payTy: '01',
+            payTy: '일시불',
             payAmt: 76532
         }, {
             apprNo: 10000006,
@@ -66,7 +66,7 @@ export class MpaController extends BaseController {
             fmlYn: false,
             brandCd: 'U',
             cardNo: '0911',
-            payTy: '01',
+            payTy: '일시불',
             payAmt: 50000
         }];
 

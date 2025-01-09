@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+@font-face {
+  font-family: 'Nanum Square';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/NanumSquareR.ttf) format('truetype');
+}
+
+body, button, input, select, textarea {font-family:'Nanum Square', '맑은 고딕', 'Malgun Gothic', 'Dotum', '돋움', 'gulim', '굴림', Helvetica, sans-serif; font-weight:400;}
+body{padding:10px;}
+.usage {border-top:1px solid #DDD;border-bottom:1px solid #DDD;margin:0;padding:0;
+    font-size:0.9rem;}
+.usage li {list-style:none;border-top:1px solid #DDD;}
+.row_item {display:flex;-webkit-box-align:center;align-items:center;position:relative;margin:0;
+    padding:17px 0px;flex-wrap:wrap;height:auto;}
+.row_item dl {display:flex;align-items:flex-start;flex-direction:column;justify-content:flex-end;
+    flex:4;width:calc(100% - 265px);flex-wrap:wrap;width:initial;margin:0;}
+.row_item dl dt {width:100%;margin-bottom:7px;padding:0 10px 0 0;font-size:1.1rem;
+    font-weight:900;}
+.row_item dl dd {font-weight:400;color:#111;padding-right:0;
+    width:100%;line-height:22px;margin:0;}
+.row_item dl dd span.date {padding:0 10px 0 0;}
+.row_item .row_amt {display:flex;-webkit-box-direction:normal;flex-direction:column;
+    align-self:flex-start;width:initial;flex:2;text-align:right;font-size:1.0rem;
+    font-weight:600;}
