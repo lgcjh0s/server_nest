@@ -1,39 +1,54 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Page 1 - M00001</title>
+        <title>카드 이용내역 조회</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <style type="text/css">
+            body{padding:10px;}
+            .usage {border-top:1px solid #DDD;border-bottom:1px solid #DDD;margin:0;padding:0;
+                font-size:0.9rem;}
+            .usage li {list-style:none;border-top:1px solid #DDD;}
+            .row_item {display:flex;-webkit-box-align:center;align-items:center;position:relative;margin:0;
+                padding:17px 0px;flex-wrap:wrap;height:auto;}
+            .row_item dl {display:flex;align-items:flex-start;flex-direction:column;justify-content:flex-end;
+                flex:4;width:calc(100% - 265px);flex-wrap:wrap;width:initial;margin:0;}
+            .row_item dl dt {width:100%;margin-bottom:7px;padding:0 10px 0 0;font-size:1.1rem;
+                font-weight:700;}
+            .row_item dl dd {align-self:center;font-weight:400;color:#111;padding-right:0;
+                width:100%;line-height:22px;margin:0;}
+            .row_item dl dd span.date {padding:0 10px 0 0;}
+            .row_item .row_amt {display:flex;-webkit-box-direction:normal;flex-direction:column;
+                align-self:flex-start;width:initial;flex:2;text-align:right;font-size:1.0rem;
+                font-weight:600;}
+        </style>
     </head>
     <body>
-        <table> 
-        {{#each comment}}
-            <tr>
-                <td>{{id}}</td>
-                <td>{{name}}</td>
-            </tr>
-        {{/each}}
-        </table>
-        <ul>
+        <ul class="usage"> 
+        {{#each data}}
             <li>
-                <div>
+                <div class="row_item">
                     <dl>
-                        <dt>
-                            LG U+통신요금 자동이체
-                        </dt>
+                        <dt>{{franNm}}</dt>
                         <dd>
-                            <span>2025.01.09 07:07</span>
-                            <span>본인</span>
-                            <span>유알에스 카드</span>
-                            <span>35*</span>
+                            <span class="date">{{apprDt}} {{apprTm}}</span>
+                            <span>
+                            {{#if fmlYn}}가족{{else}}본인{{/if}}
+                            </span>
+                            <span>{{brandCd}}</span>
+                            <span>{{cardNo}}</span>
+                            <span>
+                            {{#eq this.payTy "01"}}일시불{{else}}할부{{/eq}}
+                            </span>
                         </dd>
                     </dl>
-                    <div>
-                        <span>20,140원</span>
+                    <div class="row_amt">
+                        <span>{{payAmt}}원</span>
                     </div>
                 </div>
             </li>
+        {{/each}}
         </ul>
     </body>
 </html>

@@ -18,15 +18,15 @@ import { MpaModule } from './mpa/mpa.module';
     MpaModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
-      //host: 'db.lotto.gabia.io',
-      host: 'localhost',
+      host: 'db.lotto.gabia.io',
+      //host: 'localhost',
       port: 3306,
-      //username: 'lotto',
-      username: 'testuser',
-      //password: 'user0101!!',
-      password: 'test01!',
-      //database: 'dblotto',
-      database: 'testDB',
+      username: 'lotto',
+      //username: 'testuser',
+      password: 'user0101!!',
+      //password: 'test01!',
+      database: 'dblotto',
+      //database: 'testDB',
       entities: [
         ComCode
       ],
