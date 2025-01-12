@@ -16,7 +16,13 @@ export class MpaService extends BaseService {
             brandCd: 'M',
             cardNo: '0911',
             payTy: '일시불',
-            payAmt: 11600
+            payAmt: 11600,
+            status: '전표매입',
+            cardType: '개인/신용카드',
+            trsTpNm: '신용승인',
+            aprAmt: 14545,
+            addAmt: 1455,
+            serviceAmt: 0
         }, {
             apprNo: 10000002,
             franNm: '(주)발트페이',
@@ -26,7 +32,13 @@ export class MpaService extends BaseService {
             brandCd: 'M',
             cardNo: '0911',
             payTy: '일시불',
-            payAmt: 6900
+            payAmt: 6900,
+            status: '전표매입',
+            cardType: '개인/신용카드',
+            trsTpNm: '신용승인',
+            aprAmt: 6273,
+            addAmt: 627,
+            serviceAmt: 0
         }, {
             apprNo: 10000003,
             franNm: '홈플러스(주) 파주운정점',
@@ -36,7 +48,13 @@ export class MpaService extends BaseService {
             brandCd: 'V',
             cardNo: '0359',
             payTy: '일시불',
-            payAmt: 11600
+            payAmt: 11600,
+            status: '전표매입',
+            cardType: '개인/체크카드',
+            trsTpNm: '체크승인',
+            aprAmt: 14545,
+            addAmt: 1455,
+            serviceAmt: 0
         }, {
             apprNo: 10000004,
             franNm: '여기어때',
@@ -46,7 +64,13 @@ export class MpaService extends BaseService {
             brandCd: 'M',
             cardNo: '0911',
             payTy: '할부(3개월)',
-            payAmt: 291000
+            payAmt: 291000,
+            status: '전표매입',
+            cardType: '개인/신용카드',
+            trsTpNm: '신용승인',
+            aprAmt: 264545,
+            addAmt: 26455,
+            serviceAmt: 0
         }, {
             apprNo: 10000005,
             franNm: 'SSG.COM',
@@ -56,7 +80,13 @@ export class MpaService extends BaseService {
             brandCd: 'V',
             cardNo: '0541',
             payTy: '일시불',
-            payAmt: 76532
+            payAmt: 76532,
+            status: '전표매입',
+            cardType: '개인/신용카드',
+            trsTpNm: '신용승인',
+            aprAmt: 69575,
+            addAmt: 6957,
+            serviceAmt: 0
         }, {
             apprNo: 10000006,
             franNm: '(주)연수에너지중앙로주유소',
@@ -66,7 +96,13 @@ export class MpaService extends BaseService {
             brandCd: 'M',
             cardNo: '0911',
             payTy: '일시불',
-            payAmt: 50000
+            payAmt: 50000,
+            status: '전표매입',
+            cardType: '개인/신용카드',
+            trsTpNm: '신용승인',
+            aprAmt: 45456,
+            addAmt: 4545,
+            serviceAmt: 0
         }];
 
         return apprNo === -1 ? 

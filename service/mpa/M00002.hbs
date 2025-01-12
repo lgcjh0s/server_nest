@@ -24,8 +24,51 @@
                 <div class="box_dl">
                     <dl>
                         <dt>이용금액</dt>
-                        <dd><span>{{comma payAmt}}원</span></dd>
+                        <dd><span class="pay_amt">{{comma payAmt}}원</span></dd>
                     </dl>
+                </div>
+                <div class="box_dl">
+                    <dl>
+                        <dt>승인번호</dt>
+                        <dd><span>{{apprNo}}</span></dd>
+                    </dl>
+                    <dl>
+                        <dt>매입상태</dt>
+                        <dd><span>{{status}}</span></dd>
+                    </dl>
+                    <dl>
+                        <dt>거래일자</dt>
+                        <dd><span>{{apprDt}} {{apprTm}}</span></dd>
+                    </dl>
+                    <dl>
+                        <dt>이용구분</dt>
+                        <dd><span>{{payTy}}</span></dd>
+                    </dl>
+                </div>
+                <div class="box_dl">
+                    <dl>
+                        <dt>카드종류</dt>
+                        <dd><span>{{cardType}}</span></dd>
+                    </dl>
+                    <dl>
+                        <dt>거래유형</dt>
+                        <dd><span>{{trsTpNm}}</span></dd>
+                    </dl>
+                    <dl>
+                        <dt>공급가액</dt>
+                        <dd><span>{{comma aprAmt}}</span></dd>
+                    </dl>
+                    <dl>
+                        <dt>부가세</dt>
+                        <dd><span>{{comma addAmt}}</span></dd>
+                    </dl>
+                    <dl>
+                        <dt>봉사료</dt>
+                        <dd><span>{{comma serviceAmt}}</span></dd>
+                    </dl>
+                </div>
+                <div class="btn_wrap">
+                    <button><span>닫기</span></button>
                 </div>
             </div>
         </div>

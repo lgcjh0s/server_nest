@@ -22,6 +22,12 @@ interface IApprData {
     cardNo: string;
     payTy: string;
     payAmt: number;
+    status: string;
+    cardType: string;
+    aprAmt: number;
+    addAmt: number;
+    trsTpNm: string;
+    serviceAmt: number;
 }
 
 export {

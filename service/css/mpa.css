@@ -31,8 +31,12 @@ a {text-decoration:none;color:#000;}
 .receipt_head .ext_info {display:block;width:100%;font-size:0.9rem;margin-bottom:15px;}
 .receipt_head .ext_info p{margin:5px 0px;}
 .receipt_head .ext_info img {vertical-align:middle;}
-.receipt_body {width:100%;}
-.receipt_body .box_dl {padding:15px 0px;border-top:1px solid #DDD;border-bottom:1px solid #DDD;}
-.receipt_body dl {display:flex;position:relative;width:100%;margin:0;}
-.receipt_body dl dt {flex:1;padding-left:10px;line-height:1.3rem;}
-.receipt_body dl dd {flex:1;font-size:1.3rem;text-align:right;font-weight:700;}
+.receipt_body {width:100%;border-top:1px solid #333;} 
+.receipt_body .box_dl {padding:15px 0px;border-bottom:1px solid #DDD;}
+.receipt_body dl {display:flex;position:relative;width:100%;margin:0;line-height:1.8rem;}
+.receipt_body dl dt {flex:1;padding-left:10px;line-height:1.8rem;}
+.receipt_body dl dd {flex:1;text-align:right;}
+.receipt_body dl dd span.pay_amt{font-size:1.3rem;font-weight:700;}
+.btn_wrap {width:100%;margin-top:15px;}
+.btn_wrap button {width:100%;border:1px solid #DDD;border-radius:3px;background-color:#FFF;
+    line-height:2.2rem;font-size:1.0rem;cursor:pointer;}
