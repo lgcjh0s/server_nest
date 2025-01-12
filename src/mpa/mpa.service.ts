@@ -71,6 +71,6 @@ export class MpaService extends BaseService {
 
         return apprNo === -1 ? 
             apprData : 
-            apprData.filter((v: IApprData) => v.apprNo === apprNo);
+            apprData.filter((v: IApprData) => v.apprNo == apprNo);
     }
 }

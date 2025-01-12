@@ -1,22 +1,33 @@
 <link rel="stylesheet" href="../css/mpa.css" />
-<ul class="usage"> 
-{{#each data}}
-    <li>
-        <div class="row_item">
-            <dl>
-                <dt>{{franNm}}</dt>
-                <dd>
-                    <span class="date">{{apprDt}} {{apprTm}}</span>
-                    <span>{{#if fmlYn}}가족{{else}}본인{{/if}}</span>
-                    <span><img src="{{getBrImg brandCd}}" /></span>
-                    <span>{{cardNo}}</span>
-                    <span>{{payTy}}</span>
-                </dd>
-            </dl>
-            <div class="row_amt">
-                <span>{{comma payAmt}}원</span>
+<script type="text/javascript" src="../scripts/jquery-3.4.1.min.js"></script>
+
+<div>
+    <div class="pop_head">
+        <h3>승인내역(매출전표)</h3>
+    </div>
+    <div class="pop_cont">
+        <div class="card_cont">
+            <div class="receipt_head">
+                <strong class="franNm">{{franNm}}</strong>
+                <div class="ext_info">
+                    <span class="date">
+                        {{apprDt}} {{apprTm}}
+                    </span>
+                    <p class="card_info">
+                        <span>{{#if fmlYn}}가족{{else}}본인{{/if}}</span>
+                        <span><img src="{{getBrImg brandCd}}" /></span>
+                        <span>{{cardNo}}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="receipt_body">
+                <div class="box_dl">
+                    <dl>
+                        <dt>이용금액</dt>
+                        <dd><span>{{comma payAmt}}원</span></dd>
+                    </dl>
+                </div>
             </div>
         </div>
-    </li>
-{{/each}}
-</ul>
+    </div>
+</div>

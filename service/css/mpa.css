@@ -9,6 +9,7 @@
 
 body, button, input, select, textarea {font-family:'Nanum Square', '맑은 고딕', 'Malgun Gothic', 'Dotum', '돋움', 'gulim', '굴림', Helvetica, sans-serif; font-weight:400;}
 body{padding:10px;}
+a {text-decoration:none;color:#000;}
 .usage {border-top:1px solid #DDD;border-bottom:1px solid #DDD;margin:0;padding:0;
     font-size:0.9rem;}
 .usage li {list-style:none;border-top:1px solid #DDD;}
@@ -25,3 +26,13 @@ body{padding:10px;}
 .row_item .row_amt {display:flex;-webkit-box-direction:normal;flex-direction:column;
     align-self:flex-start;width:initial;flex:2;text-align:right;font-size:1.0rem;
     font-weight:600;}
+
+.receipt_head .franNm {display:block;margin:0 0 12px;font-weight:700;}
+.receipt_head .ext_info {display:block;width:100%;font-size:0.9rem;margin-bottom:15px;}
+.receipt_head .ext_info p{margin:5px 0px;}
+.receipt_head .ext_info img {vertical-align:middle;}
+.receipt_body {width:100%;}
+.receipt_body .box_dl {padding:15px 0px;border-top:1px solid #DDD;border-bottom:1px solid #DDD;}
+.receipt_body dl {display:flex;position:relative;width:100%;margin:0;}
+.receipt_body dl dt {flex:1;padding-left:10px;line-height:1.3rem;}
+.receipt_body dl dd {flex:1;font-size:1.3rem;text-align:right;font-weight:700;}

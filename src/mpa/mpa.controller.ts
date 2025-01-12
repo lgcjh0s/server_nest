@@ -1,4 +1,4 @@
-import { Controller, Get, Render } from "@nestjs/common";
+import { Body, Controller, Get, Post, Query, Render } from "@nestjs/common";
 import { BaseController } from "src/base/base.controller";
 import { MpaService } from "./mpa.service";
 
@@ -19,9 +19,11 @@ export class MpaController extends BaseController {
         }
     }
 
-    @Get('M00002')
+    @Post('M00002')
     @Render('mpa/M00002.hbs')
-    M00002() {
-
+    M00002(@Body('apprNo') apprNo: number) {
+        return {
+            ...this.mpaService.getTestData(apprNo)[0]
+        }
     }
 }

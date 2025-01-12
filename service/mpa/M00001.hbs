@@ -1,10 +1,18 @@
 <link rel="stylesheet" href="../css/mpa.css" />
+<script type="text/javascript" src="../scripts/jquery-3.4.1.min.js"></script>
+
+<form method="post" action="/mpa/M00002">
+    <input type="hidden" id="hApprNo" name="apprNo">
+</form>
+
 <ul class="usage"> 
 {{#each data}}
     <li>
         <div class="row_item">
             <dl>
-                <dt>{{franNm}}</dt>
+                <dt>
+                    <a href="javascript:moveDetail('{{apprNo}}');">{{franNm}}</a>
+                </dt>
                 <dd>
                     <span class="date">{{apprDt}} {{apprTm}}</span>
                     <span>{{#if fmlYn}}가족{{else}}본인{{/if}}</span>
@@ -20,3 +28,10 @@
     </li>
 {{/each}}
 </ul>
+
+<script type="text/javascript">
+    const moveDetail = (apprNo) => {
+        $('#hApprNo').val(apprNo);
+        $('form').submit();
+    }
+</script>
