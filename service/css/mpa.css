@@ -15,12 +15,13 @@ body{padding:10px;}
 .row_item {display:flex;-webkit-box-align:center;align-items:center;position:relative;margin:0;
     padding:17px 0px;flex-wrap:wrap;height:auto;}
 .row_item dl {display:flex;align-items:flex-start;flex-direction:column;justify-content:flex-end;
-    flex:4;width:calc(100% - 265px);flex-wrap:wrap;width:initial;margin:0;}
+    flex:5;width:calc(100% - 265px);flex-wrap:wrap;width:initial;margin:0;}
 .row_item dl dt {width:100%;margin-bottom:7px;padding:0 10px 0 0;font-size:1.1rem;
     font-weight:900;}
 .row_item dl dd {font-weight:400;color:#111;padding-right:0;
     width:100%;line-height:22px;margin:0;}
-.row_item dl dd span.date {padding:0 10px 0 0;}
+.row_item dl dd img {vertical-align:middle;width:1.3rem;}
+.row_item dl dd span.date {padding:0 5px 0 0;}
 .row_item .row_amt {display:flex;-webkit-box-direction:normal;flex-direction:column;
     align-self:flex-start;width:initial;flex:2;text-align:right;font-size:1.0rem;
     font-weight:600;}

@@ -1,35 +1,22 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>카드 이용내역 조회</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="../css/mpa.css" />
-    </head>
-    <body>
-        <ul class="usage"> 
-        {{#each data}}
-            <li>
-                <div class="row_item">
-                    <dl>
-                        <dt>{{franNm}}</dt>
-                        <dd>
-                            <span class="date">{{apprDt}} {{apprTm}}</span>
-                            <span>
-                            {{#if fmlYn}}가족{{else}}본인{{/if}}
-                            </span>
-                            <span>{{brandCd}}</span>
-                            <span>{{cardNo}}</span>
-                            <span>{{payTy}}</span>
-                        </dd>
-                    </dl>
-                    <div class="row_amt">
-                        <span>{{#comma payAmt}}원</span>
-                    </div>
-                </div>
-            </li>
-        {{/each}}
-        </ul>
-    </body>
-</html>
+<link rel="stylesheet" href="../css/mpa.css" />
+<ul class="usage"> 
+{{#each data}}
+    <li>
+        <div class="row_item">
+            <dl>
+                <dt>{{franNm}}</dt>
+                <dd>
+                    <span class="date">{{apprDt}} {{apprTm}}</span>
+                    <span>{{#if fmlYn}}가족{{else}}본인{{/if}}</span>
+                    <span><img src="{{getBrImg brandCd}}" /></span>
+                    <span>{{cardNo}}</span>
+                    <span>{{payTy}}</span>
+                </dd>
+            </dl>
+            <div class="row_amt">
+                <span>{{comma payAmt}}원</span>
+            </div>
+        </div>
+    </li>
+{{/each}}
+</ul>
