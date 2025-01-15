@@ -26,8 +26,4 @@ export class MpaController extends BaseController {
             ...this.mpaService.getTestData(apprNo)[0]
         }
     }
-
-    @Get('S00001')
-    @Render('spa/S00001.hbs')
-    S00001() {}
 }
