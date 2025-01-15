@@ -9,6 +9,7 @@ import { ComCode } from './entity/comcode.entity';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { MpaModule } from './mpa/mpa.module';
+import { SpaModule } from './spa/spa.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { MpaModule } from './mpa/mpa.module';
     ScrapModule, 
     CookieModule,
     MpaModule,
+    SpaModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'db.lotto.gabia.io',
