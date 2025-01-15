@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Render, Res } from "@nestjs/common";
+import { Body, Controller, Get, Post, Render, Res } from "@nestjs/common";
 import { BaseController } from "src/base/base.controller";
 import { SpaService } from "./spa.service";
 import { Response } from 'express';
@@ -19,5 +19,10 @@ export class SpaController extends BaseController {
     @Post('apprList')
     async apprList(@Res() res: Response): Promise<Response> {
         return res.send(this.spaService.getTestData());
+    }
+
+    @Post('apprData')
+    async apprData(@Body('apprNo') apprNo: number, @Res() res: Response): Promise<Response> {
+        return res.send(this.spaService.getTestData(apprNo)[0]);
     }
 }
