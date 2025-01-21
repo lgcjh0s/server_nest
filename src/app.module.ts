@@ -11,6 +11,7 @@ import { join } from 'path';
 import { MpaModule } from './mpa/mpa.module';
 import { SpaModule } from './spa/spa.module';
 import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { UserModule } from './user/user.module';
     MpaModule,
     SpaModule,
     UserModule,
+    AuthModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'db.lotto.gabia.io',

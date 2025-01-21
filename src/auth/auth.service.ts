@@ -1,22 +1,26 @@
 import { Injectable } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
+import { InjectRepository } from "@nestjs/typeorm";
 import { BaseService } from "src/base/base.service";
 import { User } from "src/entity/user.entity";
-import { UserService } from "src/user/user.service";
+import { Repository } from "typeorm";
 
 @Injectable()
 export class AuthService extends BaseService {
 
     constructor (
         private readonly jwtService: JwtService,
-        private readonly userService: UserService
+        @InjectRepository(User)
+        private userRepository: Repository<User>
+
     ) {
         super();
     }
 
-    async login(user: any) {
+    async login(user: User) {
+        console.log(user);
         const payload = {
-            username: user.username,
+            username: user.userName,
             sub: user.userId
         };
         return {
@@ -25,7 +29,7 @@ export class AuthService extends BaseService {
     }
 
     async validate(userId: string, password: string): Promise<User> {
-        const user: User = await this.userService.findOne(userId);
+        const user: User = await this.userRepository.findOne({ where: { userId }});
         return user;
     }
 }
