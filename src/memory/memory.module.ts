@@ -15,6 +15,4 @@ import { ComCode } from 'src/entity/comcode.entity';
   providers: [MemoryService],
   controllers: [MemoryController]
 })
-export class MemoryModule {
-  
-}
+export class MemoryModule {}

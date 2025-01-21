@@ -10,6 +10,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { MpaModule } from './mpa/mpa.module';
 import { SpaModule } from './spa/spa.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { SpaModule } from './spa/spa.module';
     CookieModule,
     MpaModule,
     SpaModule,
+    UserModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'db.lotto.gabia.io',
