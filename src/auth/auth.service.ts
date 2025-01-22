@@ -24,7 +24,7 @@ export class AuthService extends BaseService {
             sub: user.userId
         };
         return {
-            access_token: this.jwtService.sign(payload)
+            access_token: this.jwtService.sign(payload, { secret: 'test0101!!' })
         }
     }
 
