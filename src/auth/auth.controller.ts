@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Query, Request } from "@nestjs/common";
+import { Body, Controller, Post, Query } from "@nestjs/common";
 import { BaseController } from "src/base/base.controller"
 import { User } from "src/entity/user.entity";
 import { AuthService } from "./auth.service";
@@ -12,11 +12,11 @@ export class AuthController extends BaseController {
         super();
     }
 
-    @Get('login')
-    async login(@Query('userId') userId: string, @Query('password') password: string) {
+    @Post('login')
+    async login(@Body() param: User) {
         const user: User = new User();
-        user.userId = userId;
-        user.password = password;
+        user.userId = param.userId;
+        user.password = param.userName;
         user.userName = 'test';
 
         const token = this.authService.login(user);

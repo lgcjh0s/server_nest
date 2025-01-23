@@ -30,8 +30,14 @@ interface IApprData {
     serviceAmt: number;
 }
 
+interface IToken {
+    accessToken: string;
+    refreshToken?: string;
+}
+
 export {
     IStore,
     ICachedData,
-    IApprData
+    IApprData,
+    IToken
 }

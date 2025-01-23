@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { InjectRepository } from "@nestjs/typeorm";
 import { BaseService } from "src/base/base.service";
+import { IToken } from "src/common/common.interfaces";
 import { User } from "src/entity/user.entity";
 import { Repository } from "typeorm";
 
@@ -17,14 +18,17 @@ export class AuthService extends BaseService {
         super();
     }
 
-    async login(user: User) {
-        console.log(user);
+    async login(user: User): Promise<IToken> {
+
+        //TODO :: LOGIN 처리
+
         const payload = {
+            userid: user.userId,
             username: user.userName,
-            sub: user.userId
+            role: 'A'
         };
         return {
-            access_token: this.jwtService.sign(payload, { secret: 'test0101!!' })
+            accessToken: this.jwtService.sign(payload, { secret: 'test0101!!' })
         }
     }
 
