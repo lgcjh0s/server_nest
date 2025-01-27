@@ -11,4 +11,7 @@ export class User {
 
     @Column('varchar', { name: 'USER_NAME', length: 20, nullable: false })
     userName: string;
+
+    @Column('varchar', { name: 'REFRESH_TOKEN', length: 100, nullable: true})
+    refreshToken: string;
 }

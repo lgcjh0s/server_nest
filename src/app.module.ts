@@ -12,6 +12,7 @@ import { MpaModule } from './mpa/mpa.module';
 import { SpaModule } from './spa/spa.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { User } from './entity/user.entity';
 
 @Module({
   imports: [
@@ -24,17 +25,18 @@ import { AuthModule } from './auth/auth.module';
     AuthModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'db.lotto.gabia.io',
-      //host: 'localhost',
+      //host: 'db.lotto.gabia.io',
+      host: 'localhost',
       port: 3306,
-      username: 'lotto',
-      //username: 'testuser',
-      password: 'user0101!!',
-      //password: 'test01!',
-      database: 'dblotto',
-      //database: 'testDB',
+      //username: 'lotto',
+      username: 'testuser',
+      //password: 'user0101!!',
+      password: 'test01!',
+      //database: 'dblotto',
+      database: 'testDB',
       entities: [
-        ComCode
+        ComCode,
+        User
       ],
       synchronize: false,
       logging: true

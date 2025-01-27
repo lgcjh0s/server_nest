@@ -1,7 +1,10 @@
-import { Body, Controller, Post, Query } from "@nestjs/common";
+import { Body, Controller, Post, Req, Res, UseGuards } from "@nestjs/common";
 import { BaseController } from "src/base/base.controller"
 import { User } from "src/entity/user.entity";
 import { AuthService } from "./auth.service";
+import { Response } from "express";
+import { AuthGuard } from "@nestjs/passport";
+import { Request } from "express";
 
 @Controller('auth')
 export class AuthController extends BaseController {
@@ -13,13 +16,16 @@ export class AuthController extends BaseController {
     }
 
     @Post('login')
-    async login(@Body() param: User) {
-        const user: User = new User();
-        user.userId = param.userId;
-        user.password = param.userName;
-        user.userName = 'test';
+    async login(@Body() user: User) {
+        const token = await this.authService.login(user);
+        return {
+            accessToken: token.accessToken
+        }
+    }
 
-        const token = this.authService.login(user);
-        return token;
+    @Post('/authenticate')
+    @UseGuards(AuthGuard('jwt'))
+    isAuthenticated(@Req() req: Request) {
+
     }
 }
