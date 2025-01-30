@@ -4,7 +4,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { BaseService } from "src/base/base.service";
 import { IToken } from "src/common/common.interfaces";
 import { User } from "src/entity/user.entity";
-import { keyStore } from "src/jwt/secutiry.keys";
+import { keyStore } from "src/security/secutiry.keys";
 import { Repository } from "typeorm";
 
 @Injectable()
@@ -14,7 +14,6 @@ export class AuthService extends BaseService {
         private readonly jwtService: JwtService,
         @InjectRepository(User)
         private userRepository: Repository<User>
-
     ) {
         super();
     }
@@ -22,14 +21,14 @@ export class AuthService extends BaseService {
     async login(user: User): Promise<IToken> {
 
         const userId: string = user.userId;
-        const dbUser: User = await this.userRepository.findOne({ where: { userId }});
+        const dbUser: User | null = await this.userRepository.findOneBy({ userId });
 
         if (!dbUser || !dbUser.userId) {
-            throw new NotFoundException();
+            throw new NotFoundException('No such user');
         }
 
         if (dbUser.password !== user.password) {
-            throw new UnauthorizedException();
+            throw new UnauthorizedException('Wrong password');
         }
         
         return {
@@ -68,5 +67,22 @@ export class AuthService extends BaseService {
         await this.userRepository.save(updateUser);
 
         return refreshToken;
+    }
+
+    verify(token: string) {
+        try {
+            const options = {
+                secret: keyStore.getSecret()
+            };
+            const payload = this.jwtService.verify(token, options);
+            console.log(payload);
+        } catch (e) {
+            throw new UnauthorizedException('Not authorized')
+        }
+    }
+
+    async getUser(user: User): Promise<User> {
+        const userId: string = user.userId;
+        return await this.userRepository.findOneBy({ userId });
     }
 }
