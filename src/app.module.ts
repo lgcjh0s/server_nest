@@ -13,6 +13,7 @@ import { SpaModule } from './spa/spa.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { User } from './entity/user.entity';
+import { LighthouseModule } from './lighthouse/lighthouse.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { User } from './entity/user.entity';
     SpaModule,
     UserModule,
     AuthModule,
+    LighthouseModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       //host: 'db.lotto.gabia.io',

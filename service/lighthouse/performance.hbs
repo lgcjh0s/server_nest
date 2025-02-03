@@ -1,28 +1,19 @@
 <link rel="stylesheet" href="../css/mpa.css" />
+<link rel="stylesheet" href="../css/jquery-ui.css" />
 <script type="text/javascript" src="../scripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../scripts/jquery-ui.js"></script>
 
-<form method="post" action="/mpa/M00002">
-    <input type="hidden" id="hApprNo" name="apprNo">
-</form>
-
-<ul class="usage"> 
-    <li>
-        <div class="row_item">
-            <dl>
-                <dt>
-                    <a href="javascript:moveDetail('{{apprNo}}');">{{franNm}}</a>
-                </dt>
-                <dd>
-                    <span class="date">{{apprDt}} {{apprTm}}</span>
-                    <span>{{#if fmlYn}}가족{{else}}본인{{/if}}</span>
-                    <span><img src="{{getBrImg brandCd}}" /></span>
-                    <span>{{cardNo}}</span>
-                    <span>{{payTy}}</span>
-                </dd>
-            </dl>
-            <div class="row_amt">
-                <span>{{comma payAmt}}원</span>
-            </div>
-        </div>
-    </li>
-</ul>
+<div>
+    <h2>Lighthouse Performance</h2>
+    <div>
+        <span>
+            <img src="../image/html5.png" width="30%" />
+        </span>
+        <span>
+            <img src="../image/css3.png" width="30%" />
+        </span>
+        <span>
+            <img src="../image/javascript.png" width="30%" />
+        </span>
+    </div>
+</div>
