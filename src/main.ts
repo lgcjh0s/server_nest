@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 import { Logger } from './common/common.logger';
+import * as compression from 'compression';
 
 async function bootstrap() {
 
@@ -26,6 +27,7 @@ async function bootstrap() {
   app.setBaseViewsDir(join(__dirname, '..', 'service'));
   app.engine('.hbs', hbs.engine);
   app.set('view engine', '.hbs');
+  app.use(compression());
 
   await app.listen(process.env.PORT ?? 3000);
 
