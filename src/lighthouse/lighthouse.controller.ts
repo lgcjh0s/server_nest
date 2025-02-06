@@ -6,7 +6,11 @@ export class LighthouseController extends BaseController {
 
     @Get('performance')
     @Render('lighthouse/performance.hbs')
-    performance() {}
+    performance() {
+        return {
+            "header": true
+        }
+    }
 
     @Get('seo')
     @Render('lighthouse/seo.hbs')
